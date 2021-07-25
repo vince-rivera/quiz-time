@@ -4,11 +4,16 @@ let sec = 300;
 let playerScore = 0;
 let currentQuestion = 0;
 //start button needed to start quiz
+document.getElementById('startbtn').addEventListener('click', function(event){
+    event.preventDefault();
+    timer;
+})
 //when the start button is CLICKED start timer
 document.getElementById("questions").innerHTML = questionData[currentQuestion].question
+
 function timer(){
     var countdownTimer = setInterval(function(){
-        document.getElementById('quizTimerDisplay').innerHTML='00:'+sec;
+        document.getElementById('quizTimerDisplay').innerHTML= sec;
         sec--;
         if (sec < 0) {
             clearInterval(countdownTimer);
@@ -77,13 +82,37 @@ document.getElementById("optionA").addEventListener("click", function(event) {
    
 })
 document.getElementById("optionB").addEventListener("click", function() {
-    
+    if (questionData[0].correctAnswer !== "optionB") {
+        sec-5;
+        document.getElementById('output').innerHTML= "INCORRECT!"
+    }
+    else {
+        playerScore+1;
+    document.getElementById('output').innerHTML= "CORRECT!"
+    }
+    currentQuestion++;
 })
 document.getElementById("optionC").addEventListener("click", function() {
-    
+    if (questionData[0].correctAnswer !== "optionC") {
+        sec-5;
+        document.getElementById('output').innerHTML= "INCORRECT!"
+    }
+    else {
+        playerScore+1;
+    document.getElementById('output').innerHTML= "CORRECT!"
+    }
+    currentQuestion++;
 })
 document.getElementById("optionD").addEventListener("click", function() {
-    
+    if (questionData[0].correctAnswer !== "optionD") {
+        sec-5;
+        document.getElementById('output').innerHTML= "INCORRECT!"
+    }
+    else {
+        playerScore+1;
+    document.getElementById('output').innerHTML= "CORRECT!"
+    }
+    currentQuestion++;
 })
 
 
