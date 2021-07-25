@@ -8,17 +8,17 @@
     <script src="./script.js"></script>
 </head>
 <body>
-    <div class="button">
-        <button class="start" id="startbtn">Start The Quiz!</button>
+    <div class="button" id="view1" >
+        <button class="start" id="startbtn" onclick="timer()">Start The Quiz!</button>
     </div>
     <div id="quizTimer">
         <h2>TIME LEFT!</h2>
         <p id="quizTimerDisplay"></p>
     </div>
-    <div class="question-box">
+    <div class="question-box" id="view2" style="display:none;">
         <div class="questions" id="questions">
         </div>
-        <div class="answers">
+        <div class="answers" style="display:none">
             <button id="optionA"></button>
             <button id="optionB"></button>
             <button id="optionC"></button>

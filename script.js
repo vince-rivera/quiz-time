@@ -4,10 +4,10 @@ let sec = 300;
 let playerScore = 0;
 let currentQuestion = 0;
 //start button needed to start quiz
-document.getElementById('startbtn').addEventListener('click', function(event){
-    event.preventDefault();
-    timer;
-})
+//document.getElementById('startbtn').addEventListener('click', function(event){
+    //event.preventDefault();
+    //timer;
+//})
 //when the start button is CLICKED start timer
 document.getElementById("questions").innerHTML = questionData[currentQuestion].question
 
@@ -63,6 +63,7 @@ var questionData = [
         correctAnswer: ""
     }
 ];
+//Button for Option A
 document.getElementById("optionA").addEventListener("click", function(event) {
     event.preventDefault();
     //IF the answer is incorrect make timer lose "x" seconds
@@ -81,6 +82,7 @@ document.getElementById("optionA").addEventListener("click", function(event) {
     currentQuestion++;
    
 })
+//Button for Option B
 document.getElementById("optionB").addEventListener("click", function() {
     if (questionData[0].correctAnswer !== "optionB") {
         sec-5;
@@ -92,6 +94,7 @@ document.getElementById("optionB").addEventListener("click", function() {
     }
     currentQuestion++;
 })
+//Button for Option C
 document.getElementById("optionC").addEventListener("click", function() {
     if (questionData[0].correctAnswer !== "optionC") {
         sec-5;
@@ -103,6 +106,7 @@ document.getElementById("optionC").addEventListener("click", function() {
     }
     currentQuestion++;
 })
+//Button for Option D
 document.getElementById("optionD").addEventListener("click", function() {
     if (questionData[0].correctAnswer !== "optionD") {
         sec-5;
