@@ -77,6 +77,20 @@ function setQuestion() {
     document.getElementById("optionC").value = questionData[currentQuestion].optionC;
     document.getElementById("optionD").value = questionData[currentQuestion].optionD;
 }
+function answerHandler(value) {
+    if (value === questionData[currentQuestion].correctAnswer) {
+        playerScore++;
+        document.getElementById('output').innerHTML = "CORRECT!";
+    }
+    else {
+        sec -= 5;
+        document.getElementById('output').innerHTML = "INCORRECT!";
+    }
+    currentQuestion++;
+
+    if (currentQuestion < 5) setQuestion();
+    else endQuiz();
+}
 
 // function selectAnswer() {
 //     document.getElementById("optionA").innerHTML = questionData[currentQuestion].optionA;
