@@ -3,6 +3,7 @@ let sec = 300;
 //create variable to store score for player
 let playerScore = 0;
 let currentQuestion = 0;
+const start_btn = document.querySelector('.startbtn button');
 let questionData = [
     {
         id: 1,
@@ -44,7 +45,6 @@ let questionData = [
         id: 5,
         question: "THIS IS FIFTH",
         optionA: "Y",
-        optionB: "C",
         optionC: "X",
         optionD: "B",
         correctAnswer: "optionB"
@@ -61,7 +61,7 @@ function startQuiz() {
     setClickEvents();
    }
 
-   function timer(){
+function timer(){
     var countdownTimer = setInterval(function(){
         document.getElementById('quizTimerDisplay').innerHTML= sec;
         sec--;
@@ -70,6 +70,7 @@ function startQuiz() {
         }
     }, 1000);
 }
+
 function setQuestion() {
     document.getElementById("question").innerHTML = questionData[currentQuestion].question;
     document.getElementById("optionA").value = questionData[currentQuestion].optionA;
@@ -77,6 +78,7 @@ function setQuestion() {
     document.getElementById("optionC").value = questionData[currentQuestion].optionC;
     document.getElementById("optionD").value = questionData[currentQuestion].optionD;
 }
+
 function answerHandler(value) {
     if (value === questionData[currentQuestion].correctAnswer) {
         playerScore++;
@@ -90,6 +92,28 @@ function answerHandler(value) {
 
     if (currentQuestion < 5) setQuestion();
     else endQuiz();
+}
+function setClickEvents() {
+    //Button for Option A
+    document.getElementById("optionA").addEventListener("click", function (event) {
+        event.preventDefault();
+        answerHandler(event.target.value);
+    });
+    //Button for Option B
+    document.getElementById("optionB").addEventListener("click", function (event) {
+        event.preventDefault();
+        answerHandler(event.target.value);
+    });
+    //Button for Option C
+    document.getElementById("optionC").addEventListener("click", function (event) {
+        event.preventDefault();
+        answerHandler(event.target.value);
+    });
+    //Button for Option D
+    document.getElementById("optionD").addEventListener("click", function (event) {
+        event.preventDefault();
+        answerHandler(event.target.value);
+    });
 }
 
 // function selectAnswer() {

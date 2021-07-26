@@ -8,27 +8,25 @@
     <script src="./script.js"></script>
 </head>
 <body>
-    <div class="button" id="startQuizDiv" >
+    <div class="button" id="startQuizDiv">
         <button class="start" id="startbtn" onclick="startQuiz()">Start The Quiz!</button>
     </div>
-    <div id="quizTimer" style="display:none">
-        <h2>TIME LEFT!</h2>
+    <div id="quizTimerDiv" style="display:none">
         <p id="quizTimerDisplay"></p>
     </div>
     <div class="question-box" id="questionDiv" style="display:none">
         <div class="questions" id="questions">
             <p id="question"></p>
         </div>
-        <div class="answers" onclick="selectAnswer()">
-            <div><input type="button" id="optionA" /></button></div>
-            <div><input type="button" id="optionB" /></button></div>
-            <div><input type="button" id="optionC" /></button></div>
-            <div><input type="button" id="optionD" /></button></div>
+        <div class="answers">
+            <div><input type="button" id="optionA" /></div>
+            <div><input type="button" id="optionB" /></div>
+            <div><input type="button" id="optionC" /></div>
+            <div><input type="button" id="optionD" /></div>
         </div>
     </div>
     <div class="output" id="outputDiv">
         <p id="output"></p>
     </div>
-    
 </body>
 </html>
