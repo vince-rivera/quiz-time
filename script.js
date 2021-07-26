@@ -3,14 +3,54 @@ let sec = 300;
 //create variable to store score for player
 let playerScore = 0;
 let currentQuestion = 0;
+let questionData = [
+    {
+        question:"How do you select a class using JavaScript?",
+        optionA:"This text",
+        optionB:"This text",
+        optionC:"This text",
+        optionD:"This text",
+        correctAnswer: "optionC"
+    },
+    {
+        question:"THIS IS 2ND QUESTION",
+        optionA:"yo",
+        optionB:"no",
+        optionC:"toe",
+        optionD:"go ",
+        correctAnswer: "OptionB"
+    },
+    {
+        question:"THIS IS THIRD QUESTION",
+        optionA:"THIS",
+        optionB:"THAT",
+        optionC:"TERE",
+        optionD:"HOW",
+        correctAnswer: "optionD"
+    },
+    {
+        question:"THIS IS FOURTH",
+        optionA:"Y",
+        optionB:"B",
+        optionC:"C",
+        optionD:"G",
+        correctAnswer: "optionA"
+    },
+    {
+        question: "THIS IS FIFTH",
+        optionA: "Y",
+        optionB: "C",
+        optionC: "X",
+        optionD: "B",
+        correctAnswer: "optionB"
+    }
+];
 //start button needed to start quiz
-//document.getElementById('startbtn').addEventListener('click', function(event){
-    //event.preventDefault();
-    //timer;
-//})
 //when the start button is CLICKED start timer
-document.getElementById("questions").innerHTML = questionData[currentQuestion].question
-
+function startQuiz() {
+    document.getElementById("questions").innerHTML = questionData[currentQuestion].question;
+    timer();
+}
 function timer(){
     var countdownTimer = setInterval(function(){
         document.getElementById('quizTimerDisplay').innerHTML= sec;
@@ -20,49 +60,12 @@ function timer(){
         }
     }, 1000);
 }
+
+
+
 //display question and answer choices
-var questionData = [
-    {
-        question:"This question",
-        optionA:"This text",
-        optionB:"This text",
-        optionC:"This text",
-        optionD:"This text",
-        correctAnswer: "optionC"
-    },
-    {
-        question:"",
-        optionA:"",
-        optionB:"",
-        optionC:"",
-        optionD:"",
-        correctAnswer: ""
-    },
-    {
-        question:"",
-        optionA:"",
-        optionB:"",
-        optionC:"",
-        optionD:"",
-        correctAnswer: ""
-    },
-    {
-        question:"",
-        optionA:"",
-        optionB:"",
-        optionC:"",
-        optionD:"",
-        correctAnswer: ""
-    },
-    {
-        question: "",
-        optionA: "",
-        optionB: "",
-        optionC: "",
-        optionD: "",
-        correctAnswer: ""
-    }
-];
+function selectAnswer() {
+
 //Button for Option A
 document.getElementById("optionA").addEventListener("click", function(event) {
     event.preventDefault();
@@ -118,8 +121,7 @@ document.getElementById("optionD").addEventListener("click", function() {
     }
     currentQuestion++;
 })
-
-
+}
 //end test IF timer reaches 0 or user completes all questions
 //display score
 //let user input initials and save to local storage

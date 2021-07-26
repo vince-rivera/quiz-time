@@ -9,20 +9,20 @@
 </head>
 <body>
     <div class="button" id="view1" >
-        <button class="start" id="startbtn" onclick="timer()">Start The Quiz!</button>
+        <button class="start" id="startbtn" onclick="startQuiz()">Start The Quiz!</button>
     </div>
     <div id="quizTimer">
         <h2>TIME LEFT!</h2>
         <p id="quizTimerDisplay"></p>
     </div>
-    <div class="question-box" id="view2" style="display:none;">
+    <div class="question-box" id="view2">
         <div class="questions" id="questions">
         </div>
-        <div class="answers" style="display:none">
-            <button id="optionA"></button>
-            <button id="optionB"></button>
-            <button id="optionC"></button>
-            <button id="optionD"></button>
+        <div class="answers">
+            <button id="optionA">A</button>
+            <button id="optionB">B</button>
+            <button id="optionC">C</button>
+            <button id="optionD">D</button>
         </div>
     </div>
     <div class="output" id="output">
