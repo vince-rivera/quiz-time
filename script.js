@@ -5,7 +5,8 @@ let playerScore = 0;
 let currentQuestion = 0;
 let questionData = [
     {
-        question:"How do you select a class using JavaScript?",
+        numb: 1,
+        question:"How do you select a class in JavaScript?",
         optionA:"This text",
         optionB:"This text",
         optionC:"This text",
@@ -13,6 +14,7 @@ let questionData = [
         correctAnswer: "optionC"
     },
     {
+        numb: 2,
         question:"THIS IS 2ND QUESTION",
         optionA:"yo",
         optionB:"no",
@@ -21,6 +23,7 @@ let questionData = [
         correctAnswer: "OptionB"
     },
     {
+        numb: 3,
         question:"THIS IS THIRD QUESTION",
         optionA:"THIS",
         optionB:"THAT",
@@ -29,6 +32,7 @@ let questionData = [
         correctAnswer: "optionD"
     },
     {
+        numb: 4,
         question:"THIS IS FOURTH",
         optionA:"Y",
         optionB:"B",
@@ -37,6 +41,7 @@ let questionData = [
         correctAnswer: "optionA"
     },
     {
+        numb: 5,
         question: "THIS IS FIFTH",
         optionA: "Y",
         optionB: "C",
@@ -48,8 +53,13 @@ let questionData = [
 //start button needed to start quiz
 //when the start button is CLICKED start timer
 function startQuiz() {
-    document.getElementById("questions").innerHTML = questionData[currentQuestion].question;
     timer();
+    document.getElementById("questions").innerHTML = questionData[currentQuestion].question;
+    document.getElementById("optionA").innerHTML = questionData[currentQuestion].optionA;
+    document.getElementById("optionB").innerHTML = questionData[currentQuestion].optionB;
+    document.getElementById("optionC").innerHTML = questionData[currentQuestion].optionC;
+    document.getElementById("optionD").innerHTML = questionData[currentQuestion].optionD;
+   
 }
 function timer(){
     var countdownTimer = setInterval(function(){
@@ -60,68 +70,72 @@ function timer(){
         }
     }, 1000);
 }
+function selectAnswer() {
+    document.getElementById("optionA").innerHTML = questionData[currentQuestion].optionA;
+    document.getElementById("optionB").innerHTML = questionData[currentQuestion].optionB;
+    document.getElementById("optionC").innerHTML = questionData[currentQuestion].optionC;
+    document.getElementById("optionD").innerHTML = questionData[currentQuestion].optionD;
+    document.getElementById("optionA").addEventListener("click", function(event) {
+        event.preventDefault();
+        
+        //IF the answer is incorrect make timer lose "x" seconds
+        if (questionData[0].correctAnswer !== "optionA") {
+            sec-5;
+             //Else display Incorrect
+            document.getElementById('output').innerHTML= "INCORRECT!"
+        }
+        //ELSE continue with the quiz as normal and increase score by 1.
+        else {
+            playerScore+1;
+        //Display if answer choice was "Correct"
+        document.getElementById('output').innerHTML= "CORRECT!";
+        }
+        //Go to next question
+        currentQuestion++;
+       
+    })
+    //Button for Option B
+    document.getElementById("optionB").addEventListener("click", function() {
+        if (questionData[0].correctAnswer !== "optionB") {
+            sec-5;
+            document.getElementById('output').innerHTML= "INCORRECT!"
+        }
+        else {
+            playerScore+1;
+        document.getElementById('output').innerHTML= "CORRECT!"
+        }
+        currentQuestion++;
+    })
+    //Button for Option C
+    document.getElementById("optionC").addEventListener("click", function() {
+        if (questionData[0].correctAnswer !== "optionC") {
+            sec-5;
+            document.getElementById('output').innerHTML= "INCORRECT!"
+        }
+        else {
+            playerScore+1;
+        document.getElementById('output').innerHTML= "CORRECT!"
+        }
+        currentQuestion++;
+    })
+    //Button for Option D
+    document.getElementById("optionD").addEventListener("click", function() {
+        if (questionData[0].correctAnswer !== "optionD") {
+            sec-5;
+            document.getElementById('output').innerHTML= "INCORRECT!"
+        }
+        else {
+            playerScore+1;
+        document.getElementById('output').innerHTML= "CORRECT!"
+        }
+        currentQuestion++;
+    })
+}
 
 
 
 //display question and answer choices
-function selectAnswer() {
 
-//Button for Option A
-document.getElementById("optionA").addEventListener("click", function(event) {
-    event.preventDefault();
-    //IF the answer is incorrect make timer lose "x" seconds
-    if (questionData[0].correctAnswer !== "optionA") {
-        sec-5;
-         //Else display Incorrect
-        document.getElementById('output').innerHTML= "INCORRECT!"
-    }
-    //ELSE continue with the quiz as normal and increase score by 1.
-    else {
-        playerScore+1;
-    //Display if answer choice was "Correct"
-    document.getElementById('output').innerHTML= "CORRECT!"
-    }
-    //Go to next question
-    currentQuestion++;
-   
-})
-//Button for Option B
-document.getElementById("optionB").addEventListener("click", function() {
-    if (questionData[0].correctAnswer !== "optionB") {
-        sec-5;
-        document.getElementById('output').innerHTML= "INCORRECT!"
-    }
-    else {
-        playerScore+1;
-    document.getElementById('output').innerHTML= "CORRECT!"
-    }
-    currentQuestion++;
-})
-//Button for Option C
-document.getElementById("optionC").addEventListener("click", function() {
-    if (questionData[0].correctAnswer !== "optionC") {
-        sec-5;
-        document.getElementById('output').innerHTML= "INCORRECT!"
-    }
-    else {
-        playerScore+1;
-    document.getElementById('output').innerHTML= "CORRECT!"
-    }
-    currentQuestion++;
-})
-//Button for Option D
-document.getElementById("optionD").addEventListener("click", function() {
-    if (questionData[0].correctAnswer !== "optionD") {
-        sec-5;
-        document.getElementById('output').innerHTML= "INCORRECT!"
-    }
-    else {
-        playerScore+1;
-    document.getElementById('output').innerHTML= "CORRECT!"
-    }
-    currentQuestion++;
-})
-}
 //end test IF timer reaches 0 or user completes all questions
 //display score
 //let user input initials and save to local storage
