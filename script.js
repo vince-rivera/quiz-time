@@ -4,54 +4,58 @@ let sec = 300;
 let playerScore = 0;
 let currentQuestion = 0;
 const start_btn = document.querySelector('.startbtn button');
-let questionData = [
+//start button needed to start quiz
+//when the start button is CLICKED start timer
+
+//display question and answer choices
+var questionData = [
     {
         id: 1,
-        question:"How do you select a class in JavaScript?",
-        optionA:"This text",
-        optionB:"This text",
-        optionC:"This text",
-        optionD:"This text",
-        correctAnswer: "optionC"
+        question: "What tag is used to put JavaScript inside HTML?",
+        optionA: "<src>",
+        optionB: "<scripting>",
+        optionC: "<script>",
+        optionD: "<js>",
+        correctAnswer: "<script>"
     },
     {
         id: 2,
-        question:"THIS IS 2ND QUESTION",
-        optionA:"yo",
-        optionB:"no",
-        optionC:"toe",
-        optionD:"go ",
-        correctAnswer: "OptionB"
+        question: "Where is the correct place to insert a JavaScript source?",
+        optionA: "A div",
+        optionB: "the <head>",
+        optionC: "the <footer>",
+        optionD: "at the end of the <body>",
+        correctAnswer: "the <head>"
     },
     {
         id: 3,
-        question:"THIS IS THIRD QUESTION",
-        optionA:"THIS",
-        optionB:"THAT",
-        optionC:"TERE",
-        optionD:"HOW",
-        correctAnswer: "optionD"
+        question: "What is the correct syntax for a function?",
+        optionA: "function myFunction()",
+        optionB: "function:myfunction()",
+        optionC: "function = myFFunction()",
+        optionD: "function {}",
+        correctAnswer: "function myFunction()"
     },
     {
         id: 4,
-        question:"THIS IS FOURTH",
-        optionA:"Y",
-        optionB:"B",
-        optionC:"C",
-        optionD:"G",
-        correctAnswer: "optionA"
+        question: "How do you start a while loop?",
+        optionA: "while (i<=10)",
+        optionB: "idk this is hard",
+        optionC: "while i=10",
+        optionD: "while (i<= 10; i++)",
+        correctAnswer: "while (i<= 10; i++)"
     },
     {
         id: 5,
-        question: "THIS IS FIFTH",
-        optionA: "Y",
-        optionC: "X",
-        optionD: "B",
-        correctAnswer: "optionB"
+        question: "How do you comment out code in a HTML file?",
+        optionA: "//this is a comment",
+        optionB: "`this is a comment`",
+        optionC: "<!--this is a comment-->",
+        optionD: "/* this is a comment*/",
+        correctAnswer: "<!--this is a comment-->"
     }
 ];
-//start button needed to start quiz
-//when the start button is CLICKED start timer
+
 function startQuiz() {
     setQuestion();
     timer();
@@ -59,40 +63,8 @@ function startQuiz() {
     document.getElementById("quizTimerDiv").style.display = "block";
     document.getElementById("questionDiv").style.display = "block";
     setClickEvents();
-   }
-
-function timer(){
-    var countdownTimer = setInterval(function(){
-        document.getElementById('quizTimerDisplay').innerHTML= sec;
-        sec--;
-        if (sec < 0) {
-            clearInterval(countdownTimer);
-        }
-    }, 1000);
 }
 
-function setQuestion() {
-    document.getElementById("question").innerHTML = questionData[currentQuestion].question;
-    document.getElementById("optionA").value = questionData[currentQuestion].optionA;
-    document.getElementById("optionB").value = questionData[currentQuestion].optionB;
-    document.getElementById("optionC").value = questionData[currentQuestion].optionC;
-    document.getElementById("optionD").value = questionData[currentQuestion].optionD;
-}
-
-function answerHandler(value) {
-    if (value === questionData[currentQuestion].correctAnswer) {
-        playerScore++;
-        document.getElementById('output').innerHTML = "CORRECT!";
-    }
-    else {
-        sec -= 5;
-        document.getElementById('output').innerHTML = "INCORRECT!";
-    }
-    currentQuestion++;
-
-    if (currentQuestion < 5) setQuestion();
-    else endQuiz();
-}
 function setClickEvents() {
     //Button for Option A
     document.getElementById("optionA").addEventListener("click", function (event) {
@@ -114,6 +86,47 @@ function setClickEvents() {
         event.preventDefault();
         answerHandler(event.target.value);
     });
+}
+
+function answerHandler(value) {
+    if (value === questionData[currentQuestion].correctAnswer) {
+        playerScore++;
+        document.getElementById('output').innerHTML = "CORRECT!";
+    }
+    else {
+        sec -= 5;
+        document.getElementById('output').innerHTML = "INCORRECT!";
+    }
+    currentQuestion++;
+
+    if (currentQuestion < 5) setQuestion();
+    else endQuiz();
+}
+
+function setQuestion() {
+    document.getElementById("question").innerHTML = questionData[currentQuestion].question;
+    document.getElementById("optionA").value = questionData[currentQuestion].optionA;
+    document.getElementById("optionB").value = questionData[currentQuestion].optionB;
+    document.getElementById("optionC").value = questionData[currentQuestion].optionC;
+    document.getElementById("optionD").value = questionData[currentQuestion].optionD;
+}
+
+function timer() {
+    var countdownTimer = setInterval(function () {
+        document.getElementById('quizTimerDisplay').innerHTML = `Time remaining: ${sec} seconds`;
+        sec--;
+        if (sec < 0) {
+            clearInterval(countdownTimer);
+            alert("Out of time!");
+            endQuiz();
+        }
+    }, 1000);
+}
+
+function endQuiz() {
+    document.getElementById("quizTimerDiv").style.display = "none";
+    document.getElementById("questionDiv").style.display = "none";
+    document.getElementById('output').innerHTML = `Final Score: ${playerScore}`;
 }
 
 // function selectAnswer() {
