@@ -3,7 +3,6 @@ let sec = 300;
 //create variable to store score for player
 let playerScore = 0;
 let currentQuestion = 0;
-const start_btn = document.querySelector('.startbtn button');
 //start button needed to start quiz
 //when the start button is CLICKED start timer
 
@@ -60,8 +59,8 @@ function startQuiz() {
     setQuestion();
     timer();
     document.getElementById("startQuizDiv").style.display = "none";
-    document.getElementById("quizTimerDiv").style.display = "block";
-    document.getElementById("questionDiv").style.display = "block";
+    document.getElementById("quizDiv").style.display = "block";
+
     setClickEvents();
 }
 
@@ -124,10 +123,26 @@ function timer() {
 }
 
 function endQuiz() {
-    document.getElementById("quizTimerDiv").style.display = "none";
-    document.getElementById("questionDiv").style.display = "none";
-    document.getElementById('output').innerHTML = `Final Score: ${playerScore}`;
+    document.getElementById("quizDiv").style.display = "none";
+    document.getElementById("outputDiv").style.display = "block";
+    highScoreHandler();
 }
+
+function highScoreHandler() {
+    //prompt user for initials
+    var initials = window.prompt('Enter initials');
+    //pull player score from local storage
+    var highScores = JSON.parse(localStorage.getItem('HighScores'));
+    //give each player and score an ID
+    var id = Math.floor(Math.random() * 10000);
+
+    // if there is nothing in local storage, default to empty array
+    if (!highScores) highScores = []; 
+    //Push player initials and score into the highscores array
+    highScores.push({ 'id': id, 'initials': initials, 'score': playerScore })
+    //set new score into array with others
+    localStorage.setItem('HighScores', JSON.stringify(highScores));
+
 
 // function selectAnswer() {
 //     document.getElementById("optionA").innerHTML = questionData[currentQuestion].optionA;
@@ -139,7 +154,7 @@ function endQuiz() {
         
 //         //IF the answer is incorrect make timer lose "x" seconds
 //         if (questionData[0].correctAnswer !== "optionA") {
-//             sec-5;
+//             sec -= 5;
 //              //Else display Incorrect
 //             document.getElementById('output').innerHTML= "INCORRECT!"
 //         }

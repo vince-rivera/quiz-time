@@ -11,10 +11,8 @@
     <div class="button" id="startQuizDiv">
         <button class="start" id="startbtn" onclick="startQuiz()">Start The Quiz!</button>
     </div>
-    <div id="quizTimerDiv" style="display:none">
+    <div id="quizDiv" style="display:none">
         <p id="quizTimerDisplay"></p>
-    </div>
-    <div class="question-box" id="questionDiv" style="display:none">
         <div class="questions" id="questions">
             <p id="question"></p>
         </div>
@@ -24,9 +22,12 @@
             <div><input type="button" id="optionC" /></div>
             <div><input type="button" id="optionD" /></div>
         </div>
+        <div><p id="output"></p></div>
     </div>
-    <div class="output" id="outputDiv">
-        <p id="output"></p>
+    <div class="output" id="outputDiv" style="display:none">
+        <h4>High Scores</h4>
+        <ul id="highScores">
+        </ul>
     </div>
 </body>
 </html>
