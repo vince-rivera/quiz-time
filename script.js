@@ -143,6 +143,25 @@ function highScoreHandler() {
     //set new score into array with others
     localStorage.setItem('HighScores', JSON.stringify(highScores));
 
+    // build a sort function 
+    var sortedScores = highScores.sort((obj1, obj2) => {
+        return compareObjects(obj1, obj2, 'score');
+    });
+
+    var scoreList = "";
+    sortedScores.forEach((item) => {
+        if (item.id === id) scoreList = `${scoreList}<li><strong>${item.initials} | ${item.score}</strong></li>` // id comparision to check for current player. if it is, make the font bold.
+        else scoreList = `${scoreList}<li>${item.initials} | ${item.score}</li>`
+    });
+    //display the score list with player name and score
+    document.getElementById('highScores').innerHTML = scoreList;
+}
+    //comparing objects to sort in a numerical order of score
+function compareObjects(obj1, obj2, key) {
+    if (obj1[key] > obj2[key]) return -1;
+    if (obj1[key] < obj2[key]) return 1;
+    return 0;
+}
 
 // function selectAnswer() {
 //     document.getElementById("optionA").innerHTML = questionData[currentQuestion].optionA;
